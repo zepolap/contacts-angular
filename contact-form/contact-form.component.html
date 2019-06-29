@@ -1,0 +1,35 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+      <div class="form-group">
+        <label for="firstname">Firstname</label>
+        <input type="text" [(ngModel)]="contact.firstname" 
+          class="form-control" id="firstname" name="firstname" placeholder="Enter your firstname"
+          required #firstname="ngModel">
+      </div>
+      <div [hidden]="!firstname.pristine" class="alert alert-danger">Firstname is required</div>
+      <div class="form-group">
+        <label for="lastname">lastname</label>
+        <input type="text" [(ngModel)]="contact.lastname" 
+          class="form-control" id="lastname" name="lastname" placeholder="Enter your lastname"
+          required #lastname="ngModel">
+      </div>
+      <div [hidden]="!lastname.pristine" class="alert alert-danger">Lastname is required</div>
+      <div class="form-group">
+        <label for="phonenumber">Phonenumber</label>
+        <input type="text" [(ngModel)]="contact.phonenumber" 
+          class="form-control" id="phonenumber" name="phonenumber" placeholder="Enter your phonenumber"
+          required #phonenumber="ngModel">
+      </div>
+      <div [hidden]="!phonenumber.pristine" class="alert alert-danger">Phonenumber is required</div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" [(ngModel)]="contact.email" 
+          class="form-control" id="email" name="email" placeholder="Enter your email address"
+          required #email="ngModel">
+        <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+      </div>
+      <button type="submit" [disabled]="!contactForm.form.valid" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
