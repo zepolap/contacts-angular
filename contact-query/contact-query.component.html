@@ -1,0 +1,27 @@
+<div class="card my-5">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #contactQuery="ngForm">
+        <div class="form-group">
+          <label for="firstname">Firstname</label>
+          <input type="text" [(ngModel)]="contact.firstname" 
+            class="form-control" id="firstname" name="firstname" placeholder="Enter your firstname"
+            required #firstname="ngModel">
+        </div>
+        <div [hidden]="!firstname.pristine" class="alert alert-danger">Firstname is required</div>
+        <div class="form-group">
+          <label for="lastname">Lastname</label>
+          <input type="text" [(ngModel)]="contact.lastname" 
+            class="form-control" id="lastname" name="lastname" placeholder="Enter your lastname"
+            required #lastname="ngModel">
+        </div>
+        <div [hidden]="!lastname.pristine" class="alert alert-danger">Lastname is required</div>
+        
+        <span *ngIf="confirmDelete">
+          <span>Esta seguro que quiere borrar registro?</span>
+          <button type="submit" [disabled]="!contactQuery.form.valid" class="btn btn-danger">Si</button>
+          <button class="btn btn-primary" (click)="confirmDelete=false">No</button>
+        </span>
+        <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Delete</button>
+      </form>
+    </div>
+  </div>
